@@ -6,7 +6,8 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');//This module is used to extract css
 
 //Export Module for use
-module.export = {
+module.exports = {
+    // mode : 'devlopment',
     //This is to configure the server for webpack-server
     devServer : {
         contentBase : path.resolve(__dirname,'demo'), //This is to find the path where to start serving from
@@ -15,7 +16,7 @@ module.export = {
         writeToDisk : true  //saving temporarily wrtitng to 
     },
     //This is to specify the entry of the app
-    entry : path.join(__dirname, 'src", "js/app.js'),
+    entry :  './src/js/app.js',
 
     //This is Where the webpack is going to be outputting its result after bundling
     output: {
@@ -24,7 +25,7 @@ module.export = {
         publicPath : '/demo'
     },
     //configure the rules that would be followed by webpack
-    //And alaso how to bundle our files and dependencies
+    //And also how to bundle our files and dependencies
     module : {
         rules : [
             {
@@ -40,7 +41,7 @@ module.export = {
                     //Loading the postCss
                     {
                         loader : 'postcss-loader',
-                        options : {
+                        options : { 
                             plugins : function(){
                                 return [
                                     require('autoprefixer')
